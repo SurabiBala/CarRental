@@ -1,0 +1,146 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Surabi\\CarRental\\CarRental\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\views\\bookingdetails\\bookingdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\bookingdetails\\bookingdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\bpo\\managecarsbpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\bpo\\managecarsbpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\controllers\\managecarscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\controllers\\managecarscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\bpo\\dashboardbpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\bpo\\dashboardbpo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|d:\\surabi\\carrental\\carrental\\carrental\\views\\dashboard\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{96D4DA8B-5A26-4D86-BB6F-A34CF075B14B}|CarRental\\CarRental.csproj|solutionrelative:carrental\\views\\dashboard\\dashboard.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 7,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Dashboard.cshtml",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\Dashboard\\Dashboard.cshtml",
+              "RelativeDocumentMoniker": "CarRental\\Views\\Dashboard\\Dashboard.cshtml",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\Dashboard\\Dashboard.cshtml",
+              "RelativeToolTip": "CarRental\\Views\\Dashboard\\Dashboard.cshtml",
+              "ViewState": "AgIAAHoAAAAAAAAAAAAgwJgAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-11T10:31:10.675Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "CarRental\\Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "CarRental\\Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T10:30:48.676Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DashboardBPO.cs",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\BPO\\DashboardBPO.cs",
+              "RelativeDocumentMoniker": "CarRental\\BPO\\DashboardBPO.cs",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\BPO\\DashboardBPO.cs",
+              "RelativeToolTip": "CarRental\\BPO\\DashboardBPO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T10:44:51.484Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ManageCarsController.cs",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Controllers\\ManageCarsController.cs",
+              "RelativeDocumentMoniker": "CarRental\\Controllers\\ManageCarsController.cs",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Controllers\\ManageCarsController.cs",
+              "RelativeToolTip": "CarRental\\Controllers\\ManageCarsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T10:47:24.597Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ManageCarsBPO.cs",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\BPO\\ManageCarsBPO.cs",
+              "RelativeDocumentMoniker": "CarRental\\BPO\\ManageCarsBPO.cs",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\BPO\\ManageCarsBPO.cs",
+              "RelativeToolTip": "CarRental\\BPO\\ManageCarsBPO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-06-11T10:46:34.611Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BookingDetails.cshtml",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\BookingDetails\\BookingDetails.cshtml",
+              "RelativeDocumentMoniker": "CarRental\\Views\\BookingDetails\\BookingDetails.cshtml",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\BookingDetails\\BookingDetails.cshtml",
+              "RelativeToolTip": "CarRental\\Views\\BookingDetails\\BookingDetails.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAB8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-11T10:31:16.847Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\Surabi\\CarRental\\CarRental\\CarRental\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "CarRental\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAAAFQAAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-11T05:49:48.455Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+﻿@{
+    ViewBag.Title = "ManageDrivers";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Drivers</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Drivers</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table id="driversTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Driver ID</th>
+                        <th>Photo</th>
+                        <th>Name</th>
+                        <th>License Number</th>
+                        <th>Phone</th>
+                        <th>Experience</th>
+                        <th>Rating</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Data loaded via AJAX -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css" />
+
+    <script>
+    $(document).ready(function () {
+    $.ajax({
+        url: '@Url.Action("GetDriversList", "ManageDrivers")',
+        type: 'GET',
+        success: function (data) {
+            const drivers = JSON.parse(data);
+            if (drivers.error) {
+                console.error("Error loading data:", drivers.error);
+                alert("Failed to load driver data.");
+                return;
+            }
+
+            let html = "";
+            drivers.forEach(function (driver) {
+                let statusText = '';
+                let badgeClass = '';
+                switch (driver.n_status) {
+                    case 0:
+                        statusText = 'Assigned';
+                        badgeClass = 'bg-primary';
+                        break;
+                    case 1:
+                        statusText = 'Available';
+                        badgeClass = 'bg-success';
+                        break;
+                    case 2:
+                        statusText = 'Off-duty';
+                        badgeClass = 'bg-secondary';
+                        break;
+                    default:
+                        statusText = 'Unknown';
+                        badgeClass = 'bg-dark';
+                        break;
+                }
+
+                // ⭐ Star rating handling (with decimals)
+                const rating = parseFloat(driver.n_rating) || 0;
+                let fullStars = Math.floor(rating);
+                let halfStar = (rating - fullStars) >= 0.5;
+                let starsHtml = '';
+
+                for (let i = 1; i <= 5; i++) {
+                    if (i <= fullStars) {
+                        starsHtml += '<i class="fa fa-star" style="color:gold;"></i>';
+                    } else if (i === fullStars + 1 && halfStar) {
+                        starsHtml += '<i class="fa fa-star-half-alt" style="color:gold;"></i>';
+                    } else {
+                        starsHtml += '<i class="fa fa-star" style="color:lightgray;"></i>';
+                    }
+                }
+
+                html += `<tr>
+                    <td>${driver.c_driver_id}</td>
+                    <td><img src="${driver.c_image_path}" class="img-thumbnail" style="width: 60px; height: 40px; object-fit: cover;" /></td>
+                    <td>${driver.c_name}</td>
+                    <td>${driver.c_licence_no}</td>
+                    <td>${driver.c_mobile}</td>
+                    <td>${driver.n_experiance} years</td>
+                    <td>${starsHtml}</td>
+                    <td><span class="badge ${badgeClass}">${statusText}</span></td>
+                    <td>
+                        <button class="btn btn-sm btn-outline-primary" title="View"><i class="fas fa-eye"></i></button>
+                        <button class="btn btn-sm btn-outline-warning" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                    </td>
+                </tr>`;
+            });
+
+            $('#driversTable tbody').html(html);
+
+            // Optionally apply DataTable
+            $('#driversTable').DataTable(); // enable pagination, search, etc.
+        },
+        error: function () {
+            alert("AJAX error loading drivers.");
+        }
+    });
+});
+
+    </script>
+
+}

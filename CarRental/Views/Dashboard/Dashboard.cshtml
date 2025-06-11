@@ -1,0 +1,237 @@
+﻿@{
+    ViewBag.Title = "Dashboard";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Dashboard</h2>
+
+<div class="row mb-4">
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-dark shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Total Cars</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">45</div>
+                    </div>
+                    <i class="fas fa-car-side fa-2x text-dark"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Available Cars</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">18</div>
+                    </div>
+                    <i class="fas fa-car fa-2x text-success"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Booked Cars</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">24</div>
+                    </div>
+                    <i class="fas fa-calendar-check fa-2x text-primary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Drivers</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">15</div>
+                    </div>
+                    <i class="fas fa-id-badge fa-2x text-info"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-secondary shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-secondary text-uppercase mb-1">Bookings Today</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">7</div>
+                    </div>
+                    <i class="fas fa-clock fa-2x text-secondary"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-2 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body p-2">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Revenue (Month)</div>
+                        <div class="h6 mb-0 font-weight-bold text-gray-800">Rs.45,280</div>
+                    </div>
+                    <i class="fas fa-dollar-sign fa-2x text-warning"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+    <!-- Donut Chart: Car Status -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Car Status Overview</h5>
+            </div>
+            <div class="card-body" style="height: 300px;">
+                <canvas id="carStatusChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Another Chart Placeholder -->
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white">
+                <h5 class="mb-0">Driver Assignment Overview</h5>
+            </div>
+            <div class="card-body" style="height: 300px;">
+                <canvas id="driverChart"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            // CAR STATUS PIE CHART
+            $.ajax({
+                url: '@Url.Action("GetCarStatusCount", "Dashboard")',
+                type: 'GET',
+                success: function (data) {
+                    const parsedData = JSON.parse(data);
+                    if (parsedData.error) {
+                        console.error("Error loading car status chart:", parsedData.error);
+                        return;
+                    }
+
+                    const labels = parsedData.map(x => x.status_description);
+                    const counts = parsedData.map(x => x.total_count);
+
+                    const ctx = document.getElementById('carStatusChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'doughnut',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Car Status',
+                                data: counts,
+                                backgroundColor: [
+                                    '#001f3f',  // Deep Navy
+                                    '#5f30f3',  // Dark Blue
+                                    '#004080',  // Medium Navy
+                                    '#336699'   // Soft Navy
+                                ]
+                                ,
+                                borderWidth: 1
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            plugins: {
+                                legend: {
+                                    position: 'right', // 👈 legend on the right
+                                    align: 'center'
+                                }
+                            },
+                            layout: {
+                                padding: 10
+                            }
+                        }
+
+                    });
+                },
+                error: function () {
+                    console.error("Failed to load car status chart.");
+                }
+            });
+
+            // PLACEHOLDER: DRIVER CHART (OPTIONAL: Static for now)
+            // Load driver chart dynamically
+            $.ajax({
+                url: '@Url.Action("GetDriverStatusCount", "Dashboard")',
+                type: 'GET',
+                success: function (data) {
+                    const parsedData = JSON.parse(data);
+                    if (parsedData.error) {
+                        console.error("Error loading driver chart data:", parsedData.error);
+                        return;
+                    }
+
+                    const labels = parsedData.map(x => x.status_description);
+                    const counts = parsedData.map(x => x.total_count);
+
+                    const ctx = document.getElementById('driverChart').getContext('2d');
+                    new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: labels,
+                            datasets: [{
+                                label: 'Drivers',
+                                data: counts,
+                                backgroundColor: [
+                                    '#001f3f',  // Deep Navy
+                                    '#5f30f3',  // Dark Blue
+                                    '#004060',  // Medium Navy
+                                    '#336699'   // Soft Navy
+                                ],
+                                barThickness: 20
+
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { display: false }
+                            },
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        stepSize: 1
+                                    }
+                                }
+                            }
+                        }
+                    });
+                },
+                error: function () {
+                    console.error("Failed to load driver chart.");
+                }
+            });
+        });
+    </script>
+}

@@ -1,0 +1,102 @@
+﻿
+@{
+    ViewBag.Title = "ManageCars";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Manage Cars</h2>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">All Cars</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Car ID</th>
+                        <th>Image</th>
+                        <th>Make &amp; Model</th>
+                        <th>License Plate</th>
+                        <th>Type</th>
+                        <th>Year</th>
+                        <th>Daily Rate</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="carTableBody">
+                    <!-- Car rows will be populated here dynamically -->
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Pagination -->
+        
+    </div>
+</div>
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            loadCars();
+
+            function loadCars() {
+                $.ajax({
+                    url: '@Url.Action("GetCarsList", "ManageCars")',
+                    type: 'GET',
+                    success: function (data) {
+                        if (data) {
+                            const cars = JSON.parse(data);
+                            let rows = "";
+
+                            cars.forEach(function (car) {
+                                const statusText = car.n_status == 0 ? 'Available' : car.n_status == 1 ? 'Booked' : 'Maintenance';
+                                const badgeClass = car.n_status == 0 ? 'bg-success' : car.n_status == 1 ? 'bg-warning' : 'bg-danger';
+
+                                rows += `
+                                    <tr>
+                                        <td>#${car.c_car_id}</td>
+                                        <td><img src="${car.c_image_path}" class="img-thumbnail" style="width: 60px; height: 40px; object-fit: cover;" alt="Car"></td>
+                                        <td>${car.c_model_name}</td>
+                                        <td>${car.c_licence_plate}</td>
+                                        <td>${car.c_type}</td>
+                                        <td>${car.n_year}</td>
+                                        <td>Rs.${car.n_rate_per_day}/day</td>
+                                        <td><span class="badge ${badgeClass}">${statusText}</span></td>
+                                        <td>
+                                            <button class="btn btn-sm btn-outline-primary me-1" title="View Details"><i class="fas fa-eye"></i></button>
+                                            <button class="btn btn-sm btn-outline-warning me-1" title="Edit"><i class="fas fa-edit"></i></button>
+                                            <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="fas fa-trash"></i></button>
+                                        </td>
+                                    </tr>`;
+                            });
+
+                            $('#carTableBody').html(rows);
+
+                            // Initialize or reinitialize DataTable
+                            if ($.fn.DataTable.isDataTable('.table')) {
+                                $('.table').DataTable().destroy();
+                            }
+                            $('.table').DataTable({
+                                paging: true,
+                                searching: true,
+                                ordering: true,
+                                pageLength: 5,
+                                lengthMenu: [5, 10, 25, 50]
+                            });
+                        }
+                    },
+                    error: function () {
+                        alert("Failed to load car data.");
+                    }
+                });
+            }
+        });
+    </script>
+}
