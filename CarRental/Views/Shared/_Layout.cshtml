@@ -80,25 +80,61 @@
     <div class="container-fluid mt-5 pt-4">
         <div class="row">
             <!-- Sidebar -->
+
+            @{
+                var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
+                var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
+            }
+
             <div class="col-md-2 sidebar">
                 <div class="list-group list-group-flush">
-                    <a href="@Url.Action("Dashboard", "Dashboard")" class="list-group-item list-group-item-action active">
+                    <a href="@Url.Action("Dashboard", "Dashboard")"
+                       class="list-group-item list-group-item-action @(currentController == "Dashboard" ? "active" : "")">
                         <i class="fas fa-tachometer-alt me-2"></i>Dashboard
                     </a>
-                    <a href="@Url.Action("ManageCars", "ManageCars")" class="list-group-item list-group-item-action">
+                    <a href="@Url.Action("ManageCars", "ManageCars")"
+                       class="list-group-item list-group-item-action @(currentController == "ManageCars" ? "active" : "")">
                         <i class="fas fa-car me-2"></i>Manage Cars
                     </a>
-                    <a href="@Url.Action("ManageDrivers", "ManageDrivers")" class="list-group-item list-group-item-action">
+                    <a href="@Url.Action("ManageDrivers", "ManageDrivers")"
+                       class="list-group-item list-group-item-action @(currentController == "ManageDrivers" ? "active" : "")">
                         <i class="fas fa-users me-2"></i>Manage Drivers
                     </a>
-                    <a href="@Url.Action("BookingDetails", "BookingDetails")" class="list-group-item list-group-item-action">
+                    <a href="@Url.Action("BookingDetails", "BookingDetails")"
+                       class="list-group-item list-group-item-action @(currentController == "BookingDetails" ? "active" : "")">
                         <i class="fas fa-user-check me-2"></i>Driver Allotment
                     </a>
-                    <a href="@Url.Action("Index", "Billing")" class="list-group-item list-group-item-action">
+                    <a href="@Url.Action("Index", "Billing")"
+                       class="list-group-item list-group-item-action @(currentController == "Billing" ? "active" : "")">
                         <i class="fas fa-file-invoice-dollar me-2"></i>Billing & Accounts
+                    </a>
+
+                    <a href="@Url.Action("AvailableCars", "AvailableCars")"
+                       class="list-group-item list-group-item-action @(currentController == "AvailableCars" ? "active" : "")">
+                        <i class="fas fa-car me-2"></i>Available Cars
                     </a>
                 </div>
             </div>
+
+            @*<div class="col-md-2 sidebar">
+            <div class="list-group list-group-flush">
+                <a href="@Url.Action("Dashboard", "Dashboard")" class="list-group-item list-group-item-action active">
+                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
+                </a>
+                <a href="@Url.Action("ManageCars", "ManageCars")" class="list-group-item list-group-item-action">
+                    <i class="fas fa-car me-2"></i>Manage Cars
+                </a>
+                <a href="@Url.Action("ManageDrivers", "ManageDrivers")" class="list-group-item list-group-item-action">
+                    <i class="fas fa-users me-2"></i>Manage Drivers
+                </a>
+                <a href="@Url.Action("BookingDetails", "BookingDetails")" class="list-group-item list-group-item-action">
+                    <i class="fas fa-user-check me-2"></i>Driver Allotment
+                </a>
+                <a href="@Url.Action("Index", "Billing")" class="list-group-item list-group-item-action">
+                    <i class="fas fa-file-invoice-dollar me-2"></i>Billing & Accounts
+                </a>
+            </div>
+        </div>*@
 
             <!-- Main Content Area -->
             <div class="col-md-10 main-content">
