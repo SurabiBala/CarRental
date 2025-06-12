@@ -1,5 +1,6 @@
 ﻿@{
     Layout = null;
+    var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
 }
 
 <!DOCTYPE html>
@@ -7,7 +8,10 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - Car Rental Admin</title>
+    <title>@ViewBag.Title - Wheels On Rent</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
@@ -16,56 +20,68 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
     <!-- Custom CSS -->
-    <link href="~/Content/admin.css" rel="stylesheet" />
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f5f7fa;
+        }
+
+        .navbar {
+            background-color: #11283c;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .sidebar {
+            background-color: #1e2a38;
+            min-height: 100vh;
+            padding-top: 1rem;
+        }
+
+            .sidebar .list-group-item {
+                background: transparent;
+                color: #cfd8dc;
+                border: none;
+            }
+
+                .sidebar .list-group-item:hover,
+                .sidebar .list-group-item.active {
+                    background-color: rgba(255, 255, 255, 0.1);
+                    color: #fff;
+                }
+
+        .main-content {
+            padding: 2rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 0.125rem 1rem rgba(0, 0, 0, 0.05);
+        }
+
+        .dropdown-menu {
+            border-radius: 0.75rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: #11283c;">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="padding:20px;">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")">
-                <i class="fas fa-car me-2"></i>CarRental Admin
+                <i class="fas fa-car me-2"></i>Wheels On Rent
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="@Url.Action("Index", "Home")">
-                            <i class="fas fa-tachometer-alt me-1"></i>Dashboard
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-car me-1"></i>Cars
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="@Url.Action("Index", "Cars")">All Cars</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("Add", "Cars")">Add New Car</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            <i class="fas fa-users me-1"></i>Drivers
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="@Url.Action("Index", "Drivers")">All Drivers</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("Add", "Drivers")">Add New Driver</a></li>
-                            <li><a class="dropdown-item" href="@Url.Action("Allotment", "Drivers")">Driver Allotment</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.Action("Index", "Billing")">
-                            <i class="fas fa-file-invoice-dollar me-1"></i>Billing
-                        </a>
-                    </li>
-                </ul>
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             <i class="fas fa-user-circle me-1"></i>Admin
                         </a>
-                        <ul class="dropdown-menu">
+                        <ul class="dropdown-menu dropdown-menu-end">
                             <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
                             <li><hr class="dropdown-divider" /></li>
                             <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
@@ -76,16 +92,10 @@
         </div>
     </nav>
 
-    <!-- Main Content -->
+    <!-- Page Layout -->
     <div class="container-fluid mt-5 pt-4">
         <div class="row">
             <!-- Sidebar -->
-
-            @{
-                var currentController = ViewContext.RouteData.Values["controller"]?.ToString();
-                var currentAction = ViewContext.RouteData.Values["action"]?.ToString();
-            }
-
             <div class="col-md-2 sidebar">
                 <div class="list-group list-group-flush">
                     <a href="@Url.Action("Dashboard", "Dashboard")"
@@ -108,35 +118,14 @@
                        class="list-group-item list-group-item-action @(currentController == "Billing" ? "active" : "")">
                         <i class="fas fa-file-invoice-dollar me-2"></i>Billing & Accounts
                     </a>
-
                     <a href="@Url.Action("AvailableCars", "AvailableCars")"
                        class="list-group-item list-group-item-action @(currentController == "AvailableCars" ? "active" : "")">
-                        <i class="fas fa-car me-2"></i>Available Cars
+                        <i class="fas fa-car-side me-2"></i>Available Cars
                     </a>
                 </div>
             </div>
 
-            @*<div class="col-md-2 sidebar">
-            <div class="list-group list-group-flush">
-                <a href="@Url.Action("Dashboard", "Dashboard")" class="list-group-item list-group-item-action active">
-                    <i class="fas fa-tachometer-alt me-2"></i>Dashboard
-                </a>
-                <a href="@Url.Action("ManageCars", "ManageCars")" class="list-group-item list-group-item-action">
-                    <i class="fas fa-car me-2"></i>Manage Cars
-                </a>
-                <a href="@Url.Action("ManageDrivers", "ManageDrivers")" class="list-group-item list-group-item-action">
-                    <i class="fas fa-users me-2"></i>Manage Drivers
-                </a>
-                <a href="@Url.Action("BookingDetails", "BookingDetails")" class="list-group-item list-group-item-action">
-                    <i class="fas fa-user-check me-2"></i>Driver Allotment
-                </a>
-                <a href="@Url.Action("Index", "Billing")" class="list-group-item list-group-item-action">
-                    <i class="fas fa-file-invoice-dollar me-2"></i>Billing & Accounts
-                </a>
-            </div>
-        </div>*@
-
-            <!-- Main Content Area -->
+            <!-- Main Content -->
             <div class="col-md-10 main-content">
                 @RenderBody()
             </div>
@@ -144,10 +133,10 @@
     </div>
 
     <!-- Scripts -->
+
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="~/Scripts/dashboard.js"></script>
-
     @RenderSection("Scripts", required: false)
 </body>
 </html>
