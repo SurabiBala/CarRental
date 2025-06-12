@@ -9,11 +9,11 @@
     --dark-color: #343a40;
 }
 
-body {
+/*body {*/
     /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
-    font-family: math;
+    /*font-family: math;
     background-color: #f8f9fc;
-}
+}*/
 
 .navbar-brand {
     font-size: 1.5rem;
