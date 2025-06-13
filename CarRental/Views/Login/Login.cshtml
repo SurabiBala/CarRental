@@ -41,28 +41,28 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
 
-        .login-container .logo {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-bottom: 30px;
-        }
+            .login-container .logo {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                margin-bottom: 10px;
+            }
 
-        .login-container .logo i {
-            font-size: 50px;
-            color: #2563eb;
-        }
+                .login-container .logo i {
+                    font-size: 50px;
+                    color: #2563eb;
+                }
 
-        .login-container .logo h2 {
-            font-weight: bold;
-            /*margin-top: 10px;*/
-            margin-bottom: 0;
-        }
+                .login-container .logo h2 {
+                    font-weight: bold;
+                    /*margin-top: 10px;*/
+                    margin-bottom: 0;
+                }
 
-        .login-container .logo span {
-            font-size: 14px;
-            color: #6b7280;
-        }
+                .login-container .logo span {
+                    font-size: 14px;
+                    color: #6b7280;
+                }
 
         .form-control {
             height: 50px;
@@ -85,28 +85,11 @@
             margin: 20px 0;
         }
 
-        .divider::before,
-        .divider::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #ccc;
-        }
-
-        .divider:not(:empty)::before {
-            margin-right: .75em;
-        }
-
-        .divider:not(:empty)::after {
-            margin-left: .75em;
-        }
-
-        .btn-outline-secondary {
+        .btn-outline-primary {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 8px;
-            height: 50px;
-            font-size: 16px;
         }
 
         .footer-text {
@@ -115,14 +98,14 @@
             margin-top: 20px;
         }
 
-        .footer-text a {
-            color: #2563eb;
-            text-decoration: none;
-        }
+            .footer-text a {
+                color: #2563eb;
+                text-decoration: none;
+            }
 
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
+                .footer-text a:hover {
+                    text-decoration: underline;
+                }
 
         .copyright {
             text-align: center;
@@ -142,7 +125,9 @@
             }
         }
     </style>
+
 </head>
+
 <body>
     <div class="container-wrapper">
         <div class="login-container">
@@ -178,11 +163,9 @@
                     <div class="d-grid">
                         <button type="submit" class="btn btn-primary">Sign In</button>
                     </div>
-
-                    <div class="divider">Or continue with</div>
-
+                    <br />
                     <div class="d-grid mb-3">
-                        <button type="button" class="btn btn-outline-secondary" id="showOtpLogin">
+                        <button type="button" class="btn btn-outline-primary" id="showOtpLogin">
                             <i class="bi bi-telephone"></i> Login with OTP
                         </button>
                     </div>

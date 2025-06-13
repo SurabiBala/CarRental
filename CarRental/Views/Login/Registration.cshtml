@@ -37,15 +37,15 @@
             border-radius: 15px;
             padding: 30px;
             width: 100%;
-            max-width: 900px;
+            max-width: 650px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
 
-        .register-container h3 {
-            font-weight: bold;
-            text-align: center;
-            margin-bottom: 25px;
-        }
+            .register-container h3 {
+                font-weight: bold;
+                text-align: center;
+                margin-bottom: 25px;
+            }
 
         .form-label {
             font-weight: 500;
@@ -66,14 +66,14 @@
             font-size: 14px;
         }
 
-        .footer-text a {
-            color: #2563eb;
-            text-decoration: none;
-        }
+            .footer-text a {
+                color: #2563eb;
+                text-decoration: none;
+            }
 
-        .footer-text a:hover {
-            text-decoration: underline;
-        }
+                .footer-text a:hover {
+                    text-decoration: underline;
+                }
 
         .copyright {
             text-align: center;
@@ -82,19 +82,21 @@
             margin-top: 30px;
         }
     </style>
+
 </head>
 <body>
     <div class="container-wrapper">
         <div class="register-container">
             <h3>Create Your Account</h3>
-            <form method="post" action="#">
+            <form id="registerForm" method="post">
+
                 <div class="row g-3">
                     <!-- First Name -->
                     <div class="col-md-4">
                         <label class="form-label">First Name <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" id="firstName" required>
                         </div>
                     </div>
 
@@ -103,7 +105,7 @@
                         <label class="form-label">Middle Name</label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control">
+                            <input type="text" class="form-control" id="middleName">
                         </div>
                     </div>
 
@@ -112,58 +114,58 @@
                         <label class="form-label">Last Name <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-person"></i></span>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" id="lastName" required>
                         </div>
                     </div>
 
                     <!-- Mobile Number -->
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">Mobile Number <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-telephone"></i></span>
-                            <input type="tel" class="form-control" required pattern="[0-9]{10,12}" maxlength="12">
+                            <input type="tel" class="form-control" id="mobile" required pattern="[0-9]{10,12}" maxlength="12">
                         </div>
                     </div>
 
                     <!-- Email -->
-                    <div class="col-md-6">
+                    <div class="col-md-8">
                         <label class="form-label">Email Address <span class="text-danger">*</span></label>
                         <div class="input-group">
                             <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                            <input type="email" class="form-control" required>
+                            <input type="email" class="form-control" id="email" required>
                         </div>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">Date of Birth <span class="text-danger">*</span></label>
-                        <input type="date" class="form-control" required>
+                        <input type="date" class="form-control" id="dob" required>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label class="form-label">Area <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" required>
+                        <input type="text" class="form-control" id="area" required>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">Pincode <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" id="pincode" required pattern="[0-9]{6}">
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label">State <span class="text-danger">*</span></label>
+                        <select class="form-select" id="ddlState" required>
+                            <option value="">-- Select State --</option>
+                        </select>
                     </div>
 
                     <div class="col-md-4">
                         <label class="form-label">District <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" required>
+                        <select class="form-select" id="ddlDistrict" required>
+                            <option value="">-- Select District --</option>
+                        </select>
                     </div>
-                    <div class="col-md-4">
-                        <label class="form-label">State <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" required>
-                    </div>
+
                     <div class="col-md-4">
                         <label class="form-label">Country <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" required value="India">
                     </div>
-
-                    <div class="col-md-4">
-                        <label class="form-label">Pincode <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" required pattern="[0-9]{6}">
-                    </div>
-                    @*<div class="col-md-8">
-            <label class="form-label">Address (Optional)</label>
-            <input type="text" class="form-control">
-        </div>*@
 
                     <div class="col-12 d-grid mt-3">
                         <button type="submit" class="btn btn-primary">Register</button>
@@ -182,5 +184,88 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    @*<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>*@
+
+    <script>
+    $(document).ready(function () {
+
+        // Load States
+        $.ajax({
+            url: '@Url.Action("GetState", "Login")',
+            type: 'GET',
+            success: function (data) {
+                var states = JSON.parse(data);
+                $.each(states, function (i, item) {
+                    $('#ddlState').append($('<option>', {
+                        value: item.c_code,
+                        text: item.c_name
+                    }));
+                });
+            },
+            error: function () {
+                alert('Failed to load states');
+            }
+        });
+
+        // Load Districts
+        $.ajax({
+            url: '@Url.Action("GetDistrict", "Login")',
+            type: 'GET',
+            success: function (data) {
+                var districts = JSON.parse(data);
+                $.each(districts, function (i, item) {
+                    $('#ddlDistrict').append($('<option>', {
+                        value: item.c_code,
+                        text: item.c_name
+                    }));
+                });
+            },
+            error: function () {
+                alert('Failed to load districts');
+            }
+        });
+
+        // Bind Submit event
+        $('#registerForm').on('submit', function (e) {
+            e.preventDefault(); // ⛔️ Prevent form default behavior
+
+            var data = {
+                FirstName: $('#firstName').val(),
+                MiddleName: $('#middleName').val(),
+                LastName: $('#lastName').val(),
+                Mobile: $('#mobile').val(),
+                Email: $('#email').val(),
+                DOB: $('#dob').val(),
+                Area: $('#area').val(),
+                StateCode: $('#ddlState').val(),
+                DistrictCode: $('#ddlDistrict').val(),
+                CountryCode: 'IND',
+                Pincode: $('#pincode').val()
+            };
+
+            $.ajax({
+                url: '@Url.Action("RegisterCustomer", "Login")',
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify(data),
+                success: function (response) {
+                    if (response.success) {
+                        // Use SweetAlert if needed
+                        alert('Registration Successful!\n' + response.message);
+                        $('#registerForm')[0].reset();
+                    } else {
+                        alert('Failed to register.\n' + (response.message || 'Something went wrong.'));
+                    }
+                },
+                error: function () {
+                    alert('Error while saving data.');
+                }
+            });
+        });
+    });
+
+    </script>
+
 </body>
 </html>
