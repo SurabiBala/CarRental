@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">All Cars</h6>
@@ -13,15 +16,15 @@
             <table class="table" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th>Car ID</th>
-                        <th>Image</th>
-                        <th>Make &amp; Model</th>
-                        <th>License Plate</th>
-                        <th>Type</th>
-                        <th>Year</th>
-                        <th>Daily Rate</th>
-                        <th>Status</th>
-                        <th>Actions</th>
+                        <th style="background-color: aliceblue;">Car ID</th>
+                        <th style="background-color: aliceblue;">Image</th>
+                        <th style="background-color: aliceblue;">Make &amp; Model</th>
+                        <th style="background-color: aliceblue;">License Plate</th>
+                        <th style="background-color: aliceblue;">Type</th>
+                        <th style="background-color: aliceblue;">Year</th>
+                        <th style="background-color: aliceblue;">Daily Rate</th>
+                        <th style="background-color: aliceblue;">Status</th>
+                        <th style="background-color: aliceblue;">Actions</th>
                     </tr>
                 </thead>
                 <tbody id="carTableBody">
@@ -37,7 +40,6 @@
 </div>
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.min.css">
     <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
 
 

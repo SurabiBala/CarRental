@@ -8,7 +8,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewBag.Title - Wheels On Go</title>
+    <title>@ViewBag.Title - FLYWAY RENT A CAR</title>
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="padding:20px;">
         <div class="container-fluid">
             <a class="navbar-brand fw-bold" href="@Url.Action("Index", "Home")">
-                <i class="fas fa-car me-2"></i>Wheels On Rent
+                <i class="fas fa-car me-2"></i>FLYWAY RENT A CAR
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -114,8 +114,8 @@
                        class="list-group-item list-group-item-action @(currentController == "BookingDetails" ? "active" : "")">
                         <i class="fas fa-user-check me-2"></i>Driver Allotment
                     </a>
-                    <a href="@Url.Action("Index", "Billing")"
-                       class="list-group-item list-group-item-action @(currentController == "Billing" ? "active" : "")">
+                    <a href="@Url.Action("Invoice", "Invoice")"
+                       class="list-group-item list-group-item-action @(currentController == "Invoice" ? "active" : "")">
                         <i class="fas fa-file-invoice-dollar me-2"></i>Billing & Accounts
                     </a>
                     <a href="@Url.Action("AvailableCars", "AvailableCars")"
