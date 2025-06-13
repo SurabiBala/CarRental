@@ -46,9 +46,16 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="QuestPDF, Version=2025.5.1.0, Culture=neutral, PublicKeyToken=0f3c2b2315ff52c8, processorArchitecture=MSIL">
+      <HintPath>..\packages\QuestPDF.2025.5.1\lib\netstandard2.0\QuestPDF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -120,19 +127,26 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="BPO\AvailableCarsBPO.cs" />
     <Compile Include="BPO\BookingDetailsBPO.cs" />
     <Compile Include="BPO\CommonConnection.cs" />
     <Compile Include="BPO\DashboardBPO.cs" />
+    <Compile Include="BPO\InvoiceBPO.cs" />
+    <Compile Include="BPO\LoginBPO.cs" />
     <Compile Include="BPO\ManageCarsBPO.cs" />
     <Compile Include="BPO\ManageDriversBPO.cs" />
+    <Compile Include="Controllers\AvailableCarsController.cs" />
     <Compile Include="Controllers\BookingDetailsController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\InvoiceController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\ManageCarsController.cs" />
     <Compile Include="Controllers\ManageDriversController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\InvoicePdfGenerator.cs" />
     <Compile Include="Helpers\SqlHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -154,6 +168,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Images\bg-car.jpg" />
+    <Content Include="Content\Images\bg-car.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -193,13 +209,22 @@
     <Content Include="Views\ManageDrivers\ManageDrivers.cshtml" />
     <Content Include="Views\BookingDetails\BookingDetails.cshtml" />
     <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\AvailableCars\AvailableCars.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Login\Registration.cshtml" />
+    <Content Include="Views\Invoice\Invoice.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\AvailableCarsBPO\" />
     <Folder Include="Views\BookingDetailsBPO\" />
     <Folder Include="Views\CommonConnection\" />
     <Folder Include="Views\DashboardBPO\" />
+    <Folder Include="Views\Default\" />
+    <Folder Include="Views\InvoiceBPO\" />
+    <Folder Include="Views\InvoicePdfGenerator\" />
+    <Folder Include="Views\LoginBPO\" />
     <Folder Include="Views\ManageCarsBPO\" />
     <Folder Include="Views\ManageDriversBPO\" />
     <Folder Include="Views\SqlHelper\" />
@@ -264,7 +289,9 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\QuestPDF.2025.5.1\build\net4\QuestPDF.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\QuestPDF.2025.5.1\build\net4\QuestPDF.targets'))" />
   </Target>
+  <Import Project="..\packages\QuestPDF.2025.5.1\build\net4\QuestPDF.targets" Condition="Exists('..\packages\QuestPDF.2025.5.1\build\net4\QuestPDF.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
