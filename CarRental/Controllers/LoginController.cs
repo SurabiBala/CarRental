@@ -13,5 +13,9 @@ namespace CarRental.Controllers
         {
             return View();
         }
+        public ActionResult Registration()
+        {
+            return View();
+        }
     }
 }
